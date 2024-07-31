@@ -52,8 +52,6 @@ class Plant:
         all = Plant.get_plants()
         self.id = all[-1].id
 
-
-
 #sad :( 
     @classmethod
     def delete_plant(cls,bye):
@@ -64,16 +62,13 @@ class Plant:
         connection.commit()
     @classmethod
     def heal_plant(self,health):
-        cursor.execute('''
+        cursor.execute(f'''
         UPDATE plant
-        SET health = ?
-        WHERE id = ?
-        ''',(health,self.id))
+        SET health = {health}
+        WHERE id = {id}
+        ''',)
         connection.commit()
         self.health = health
-
-    def picked_plant(self,name,health):
-        pass
 
 
 class User:
@@ -120,34 +115,30 @@ class Zombies:
         data = res.fetchone()
         if data:
             return Zombies(
-                name = data[2],
-                hits = data[4]
+                id = data[0],
+                name = data[1],
+                health = data[2], 
+                hits = data[3]
             )
 
-    def horde(self, coming = 0):
-        self.coming = coming
+    def more(self,z_pick):
+        coming = []
+        zz = int(z_pick)
+        for i in range (0, zz):
+            horde = Zombies(
+                name = self.name,  
+                health = self.health,
+                hits = self.hits  
+            )
+            coming.append(horde)
+        return(coming)
+    
 
-
-    for i in ():
-        pass
-
-print(Zombies.get_zombie(1))
-
-# print(Plant.add_more_plants(p1))
-
-# p1 = Plant(
-#     name = "backbend" ,
-#     health =  10000999,
-#     hits = 23948888
-# )
-# p1.add_more_plants()
-
-# p1.heal_plant(34444)
-# ugly_plx 
-
-# ugly_plant.heal_plant(7)
-
-# print(Plant.selected_plant(1))
-# p2 = Plant.selected_plant(2)
-# print(p2)
-# p2.delete_plant()
+    #     coming = []
+    #     for i in range (0-z_pick):
+    #         horde = Zombies(
+    #             name= name,
+    #             health = health, 
+    #             hits = hits
+    #             )
+    #             horde.append(coming)

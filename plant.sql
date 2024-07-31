@@ -40,6 +40,4 @@ INSERT INTO plant(name, health, hits)
 VALUES("Chomper", 1000000000, 23);
 
 INSERT INTO zombies(name,health, hits)
-VALUES("Normal Zombie", 500, 125);
-INSERT INTO zombies(name,health, hits)
-VALUES("Bucket Zombie", 700, 233);
+VALUES("Normal Zombie", 10, 237);
