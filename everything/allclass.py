@@ -2,7 +2,7 @@ import sqlite3
 connection = sqlite3.connect("pvz.db")
 cursor = connection.cursor()
 
-
+#class of the plants and hold how to get all the plants, one plant, upgrade the plant, delete the plant, and add your own plant 
 class Plant:
     def __init__(self, name, health=1000, hits=0, id=None):
         self.id = id
@@ -42,7 +42,16 @@ class Plant:
                 hits = data[3]
             )
 
-    
+    def get_name(self):
+        return self._name 
+    def set_name(self, value):
+        if type(value) is str:
+            self._name = value
+        else:
+            print("Input letters")
+    name = property(get_name, set_name)
+
+
     def add_more_plants(self):
         cursor.execute('''
         INSERT INTO plant(name,health,hits)
@@ -70,7 +79,7 @@ class Plant:
         connection.commit()
         self.health = health
 
-
+#this is the user class that holds making an account, and finding your account if you already have one 
 class User:
     def __init__(self,
     # lives=3 
@@ -99,7 +108,7 @@ class User:
         ''')
         connection.commit()
 
-
+#this is the zombie class it holds a way to get one zombie and then the number of zombies you input as the horde 
 class Zombies:
     def __init__(self, name, health=100, hits= 0,id= None):
         self.id = id
@@ -132,13 +141,3 @@ class Zombies:
             )
             coming.append(horde)
         return(coming)
-    
-
-    #     coming = []
-    #     for i in range (0-z_pick):
-    #         horde = Zombies(
-    #             name= name,
-    #             health = health, 
-    #             hits = hits
-    #             )
-    #             horde.append(coming)

@@ -1,6 +1,6 @@
 from allclass import *
 import inquirer 
-
+#fun little thing to give credit to the creators of the original game
 def ending_credits():
         print("This was orginally created by 4 people, but this downgraded version was created by Gray Hanna")
         print("#please dont sue me creators")
@@ -30,10 +30,10 @@ def game_play(pickedP):
         else:
             print("both sides lost :(")
             ending_credits()
-
+#this function gets the plant and then passes the plant that you pick to the upper one, to see the gameplay and how your plant does agaisnt the number of zombies you input
 def picking():
     while True:
-        seedOne = input("Pick a plant ! (input number)")
+        seedOne = input("Pick a plant ! (input number from 1-3)")
         if seedOne == "1":
             pickedP = Plant.selected_plant(seedOne)
             print(f"You have picked, the {pickedP.name}!")
@@ -46,7 +46,8 @@ def picking():
             pickedP = Plant.selected_plant(seedOne)
             print(f"You have picked, the {pickedP.name}!")
             game_play(pickedP)
-
+#This code is the "main menu" you are able to upgrade you plant, add your own, delete a plant, or start the game within pick your plant
+#When you click on pick your plant it takes you to the upper function that shows you what plant you got
 def plant_things():
     while True:
         things_for = [
@@ -75,7 +76,9 @@ def plant_things():
                 healthy= print(f"You are healing {healing.name}, what is their new health: " )
                 healing.heal_plant(healthy)
 
-  
+#this is the very beginning of the game, but since we have to call the function above within this function, and it has to already exist 
+#its easiest for the code to go backwards!
+#this is how a user creates a login or signs back in as themselves 
 def account_signin():
     print('Welcome to Plant vs Zombies!')
     while True:
