@@ -75,6 +75,14 @@ def plant_things():
                 healing= Plant.selected_plant(baby)
                 healthy= print(f"You are healing {healing.name}, what is their new health: " )
                 healing.heal_plant(healthy)
+            if baby == "2":
+                healing= Plant.selected_plant(baby)
+                healthy= print(f"You are healing {healing.name}, what is their new health: " )
+                healing.heal_plant(healthy)
+            if baby == "3":
+                healing= Plant.selected_plant(baby)
+                healthy= print(f"You are healing {healing.name}, what is their new health: " )
+                healing.heal_plant(healthy)
 
 #this is the very beginning of the game, but since we have to call the function above within this function, and it has to already exist 
 #its easiest for the code to go backwards!
